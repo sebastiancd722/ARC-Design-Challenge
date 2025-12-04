@@ -31,8 +31,11 @@
       rpg: 7.8,
       spg: 1.9,
     };
+    window.PLAYER = PLAYER;
 
     document.addEventListener("DOMContentLoaded", () => {
+      if (!window.PLAYER) return;
+
       const bindings = {
         ppgHero: "ppg",
         apgHero: "apg",
@@ -45,15 +48,15 @@
 
       Object.entries(bindings).forEach(([id, key]) => {
         const el = document.getElementById(id);
-        if (!el) return;
-        el.dataset.countTarget = PLAYER[key];
+        if (!el || window.PLAYER[key] == null) return;
+        el.dataset.countTarget = window.PLAYER[key];
       });
     });
   </script>
 </head>
 <body class="bg-slate-950 text-slate-50 antialiased">
   <main class="min-h-screen flex flex-col items-stretch">
-    <div class="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-24">
+    <div class="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-16 sm:space-y-24">
 
       <!-- HERO SECTION (MANDATORY) -->
       <section id="hero" class="relative">
@@ -66,7 +69,7 @@
           <div class="grid lg:grid-cols-[1.1fr,0.9fr] gap-10 lg:gap-12 items-stretch">
 
             <!-- Left: text content -->
-            <div class="p-8 sm:p-10 flex flex-col justify-between gap-8">
+            <div class="p-6 sm:p-10 flex flex-col justify-between gap-6 sm:gap-8">
               <div class="space-y-6">
                 <div class="inline-flex flex-wrap items-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-3 py-[3px] text-[11px] font-semibold tracking-[0.16em] uppercase text-slate-300">
                   <span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>
@@ -95,7 +98,7 @@
                 </div>
 
                 <!-- Key metrics row -->
-                <div class="grid grid-cols-3 gap-4 sm:gap-6">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
                   <div class="space-y-1">
                     <p class="text-[11px] tracking-[0.16em] uppercase text-slate-400">Points per game</p>
                     <p class="text-2xl sm:text-3xl font-semibold">
@@ -149,7 +152,9 @@
                   View season snapshot
                 </a>
                 <a
-                  href="#"
+                  href="https://poweredbyarc.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   class="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-accent-500/60 transition"
                 >
                   Open full profile site
@@ -197,7 +202,7 @@
       </section>
 
       <!-- STATS SECTION -->
-      <section id="stats" class="relative">
+      <section id="stats" class="relative pt-4 sm:pt-0">
         <div class="space-y-8">
 
           <!-- Heading -->
@@ -224,7 +229,7 @@
           <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
 
             <!-- Card 1 -->
-            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10">
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px]">
               <div class="space-y-1">
                 <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Points per game</p>
                 <p class="text-3xl font-semibold">
@@ -245,7 +250,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10">
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px]">
               <div class="space-y-1">
                 <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Assists per game</p>
                 <p class="text-3xl font-semibold">
@@ -266,7 +271,7 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10">
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px]">
               <div class="space-y-1">
                 <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Rebounds per game</p>
                 <p class="text-3xl font-semibold">
@@ -287,7 +292,7 @@
             </div>
 
             <!-- Card 4 -->
-            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10">
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px]">
               <div class="space-y-1">
                 <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Steals per game</p>
                 <p class="text-3xl font-semibold">
