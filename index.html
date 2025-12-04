@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jordan Reyes | Athlete Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: {
+              500: "#0ea5e9",
+              600: "#0284c7",
+            },
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Simple player config (light parameterization) -->
+  <script>
+    const PLAYER = {
+      ppg: 22.4,
+      apg: 6.3,
+      tpp: 38.7,
+      rpg: 7.8,
+      spg: 1.9,
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const bindings = {
+        ppgHero: "ppg",
+        apgHero: "apg",
+        tppHero: "tpp",
+        ppgCard: "ppg",
+        apgCard: "apg",
+        rpgCard: "rpg",
+        spgCard: "spg",
+      };
+
+      Object.entries(bindings).forEach(([id, key]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.dataset.countTarget = PLAYER[key];
+      });
+    });
+  </script>
+</head>
+<body class="bg-slate-950 text-slate-50 antialiased">
+  <main class="min-h-screen flex flex-col items-stretch">
+    <div class="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-24">
+
+      <!-- HERO SECTION (MANDATORY) -->
+      <section id="hero" class="relative">
+        <div class="absolute inset-0 pointer-events-none">
+          <div class="absolute -top-24 -right-20 h-72 w-72 rounded-full bg-accent-500/15 blur-3xl"></div>
+          <div class="absolute -bottom-28 -left-10 h-72 w-72 rounded-full bg-fuchsia-500/10 blur-3xl"></div>
+        </div>
+
+        <div class="relative rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 shadow-2xl shadow-black/40 overflow-hidden">
+          <div class="grid lg:grid-cols-[1.1fr,0.9fr] gap-10 lg:gap-12 items-stretch">
+
+            <!-- Left: text content -->
+            <div class="p-8 sm:p-10 flex flex-col justify-between gap-8">
+              <div class="space-y-6">
+                <div class="inline-flex flex-wrap items-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-3 py-[3px] text-[11px] font-semibold tracking-[0.16em] uppercase text-slate-300">
+                  <span class="h-1.5 w-1.5 rounded-full bg-accent-500"></span>
+                  <span>Guard</span>
+                  <span class="text-slate-500">•</span>
+                  <span>U18 Prep Academy</span>
+                  <span class="text-slate-500">•</span>
+                  <span>Class of 2027</span>
+                </div>
+
+                <div class="space-y-3">
+                  <p class="text-xs font-semibold tracking-[0.18em] uppercase text-slate-400">
+                    Athlete profile · ARC-style section
+                  </p>
+                  <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-tight">
+                    Jordan
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-accent-500 to-sky-300">
+                      Reyes
+                    </span>
+                  </h1>
+                  <p class="text-sm sm:text-base text-slate-300 max-w-xl">
+                    Two-way guard building a brand around pace, shot creation, and on-ball defense.
+                    This profile brings game data, story, and off-court presence into one place for
+                    coaches, scouts, and sponsors.
+                  </p>
+                </div>
+
+                <!-- Key metrics row -->
+                <div class="grid grid-cols-3 gap-4 sm:gap-6">
+                  <div class="space-y-1">
+                    <p class="text-[11px] tracking-[0.16em] uppercase text-slate-400">Points per game</p>
+                    <p class="text-2xl sm:text-3xl font-semibold">
+                      <span
+                        id="ppgHero"
+                        class="countup opacity-0"
+                        data-count-target="22.4"
+                        data-count-decimals="1"
+                        data-count-duration="1200"
+                      >0.0</span>
+                    </p>
+                    <p class="text-[11px] text-slate-400">Across 28 games</p>
+                  </div>
+
+                  <div class="space-y-1">
+                    <p class="text-[11px] tracking-[0.16em] uppercase text-slate-400">Assists per game</p>
+                    <p class="text-2xl sm:text-3xl font-semibold">
+                      <span
+                        id="apgHero"
+                        class="countup opacity-0"
+                        data-count-target="6.3"
+                        data-count-decimals="1"
+                        data-count-duration="1400"
+                      >0.0</span>
+                    </p>
+                    <p class="text-[11px] text-slate-400">Primary playmaker</p>
+                  </div>
+
+                  <div class="space-y-1">
+                    <p class="text-[11px] tracking-[0.16em] uppercase text-slate-400">3PT percentage</p>
+                    <p class="text-2xl sm:text-3xl font-semibold">
+                      <span
+                        id="tppHero"
+                        class="countup opacity-0"
+                        data-count-target="38.7"
+                        data-count-decimals="1"
+                        data-count-duration="1500"
+                      >0.0</span>
+                    </p>
+                    <p class="text-[11px] text-slate-400">High-volume shooter</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CTA row -->
+              <div class="flex flex-wrap gap-3">
+                <a
+                  href="#stats"
+                  class="inline-flex items-center justify-center rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-accent-500/30 hover:bg-accent-600 focus:outline-none focus:ring-2 focus:ring-accent-500/60 transition"
+                >
+                  View season snapshot
+                </a>
+                <a
+                  href="#"
+                  class="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-900/70 px-5 py-2.5 text-sm font-semibold text-slate-100 hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-accent-500/60 transition"
+                >
+                  Open full profile site
+                </a>
+              </div>
+            </div>
+
+            <!-- Right image area -->
+            <div class="relative flex items-stretch">
+              <div class="m-8 flex-1 rounded-2xl border border-slate-800 bg-slate-900/70 overflow-hidden flex flex-col">
+
+                <!-- Image with overlay -->
+                <div class="relative flex-1">
+                  <img
+                    src="basketball.jpg"
+                    alt="Jordan Reyes at the free throw line in a prep game"
+                    class="h-full w-full object-cover object-top"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-900/20 to-transparent"></div>
+                </div>
+
+                <!-- Quick facts -->
+                <div class="border-t border-slate-700 bg-slate-950/90 px-5 py-4 space-y-3">
+                  <div class="flex items-center justify-between text-[11px] tracking-[0.16em] uppercase text-slate-400">
+                    <span>Preferred hand</span>
+                    <span class="text-slate-100 font-semibold">Right</span>
+                  </div>
+
+                  <div class="flex items-center justify-between text-[11px] tracking-[0.16em] uppercase text-slate-400">
+                    <span>Primary position</span>
+                    <span class="text-slate-100 font-semibold">Point / Shooting Guard</span>
+                  </div>
+
+                  <div class="flex items-center justify-between text-[11px] tracking-[0.16em] uppercase text-slate-400">
+                    <span>Recruiting status</span>
+                    <span class="text-accent-500 font-semibold">Open to 2027 offers</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- STATS SECTION -->
+      <section id="stats" class="relative">
+        <div class="space-y-8">
+
+          <!-- Heading -->
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            <div class="space-y-2">
+              <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400 flex items-center gap-3">
+                <span class="h-4 w-1 rounded-full bg-accent-500"></span>
+                Season stats section
+              </p>
+              <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Snapshot for coaches and scouts</h2>
+              <p class="text-sm text-slate-300 max-w-xl">
+                A modular stats block that can be reordered, duplicated, or swapped inside an ARC-style section
+                library. Values are per game and contextualized against league averages.
+              </p>
+            </div>
+
+            <div class="text-[11px] text-slate-400">
+              Section type:
+              <span class="font-semibold text-slate-100">Stats / Metrics</span>
+            </div>
+          </div>
+
+          <!-- Stats grid -->
+          <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+
+            <!-- Card 1 -->
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10">
+              <div class="space-y-1">
+                <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Points per game</p>
+                <p class="text-3xl font-semibold">
+                  <span
+                    id="ppgCard"
+                    class="countup opacity-0"
+                    data-count-target="22.4"
+                    data-count-decimals="1"
+                    data-count-duration="1300"
+                  >0.0</span>
+                </p>
+                <p class="text-[11px] text-slate-400">Primary scoring option who can create off the dribble.</p>
+              </div>
+
+              <div class="mt-3 h-1.5 w-full rounded-full bg-slate-800 overflow-hidden">
+                <div class="h-full w-[90%] rounded-full bg-accent-500"></div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10">
+              <div class="space-y-1">
+                <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Assists per game</p>
+                <p class="text-3xl font-semibold">
+                  <span
+                    id="apgCard"
+                    class="countup opacity-0"
+                    data-count-target="6.3"
+                    data-count-decimals="1"
+                    data-count-duration="1400"
+                  >0.0</span>
+                </p>
+                <p class="text-[11px] text-slate-400">Creates easy looks for teammates out of the pick-and-roll.</p>
+              </div>
+
+              <div class="mt-3 h-1.5 w-full rounded-full bg-slate-800 overflow-hidden">
+                <div class="h-full w-[78%] rounded-full bg-accent-500"></div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10">
+              <div class="space-y-1">
+                <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Rebounds per game</p>
+                <p class="text-3xl font-semibold">
+                  <span
+                    id="rpgCard"
+                    class="countup opacity-0"
+                    data-count-target="7.8"
+                    data-count-decimals="1"
+                    data-count-duration="1500"
+                  >0.0</span>
+                </p>
+                <p class="text-[11px] text-slate-400">Crashes the glass on both ends of the floor.</p>
+              </div>
+
+              <div class="mt-3 h-1.5 w-full rounded-full bg-slate-800 overflow-hidden">
+                <div class="h-full w-[82%] rounded-full bg-accent-500"></div>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10">
+              <div class="space-y-1">
+                <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Steals per game</p>
+                <p class="text-3xl font-semibold">
+                  <span
+                    id="spgCard"
+                    class="countup opacity-0"
+                    data-count-target="1.9"
+                    data-count-decimals="1"
+                    data-count-duration="1600"
+                  >0.0</span>
+                </p>
+                <p class="text-[11px] text-slate-400">Active hands at the point of attack defensively.</p>
+              </div>
+
+              <div class="mt-3 h-1.5 w-full rounded-full bg-slate-800 overflow-hidden">
+                <div class="h-full w-[74%] rounded-full bg-accent-500"></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Small note -->
+          <p class="text-[11px] text-slate-500">
+            This stats section is designed as a reusable block in a section library. In a live ARC Profile build,
+            data could update automatically from connected stat providers or game logs.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 10/10 count up script -->
+  <script>
+    (function () {
+      const counters = document.querySelectorAll(".countup");
+      if (!counters.length) return;
+
+      const prefersReducedMotion = window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      // Assign staggered delays based on index
+      counters.forEach((el, index) => {
+        el.dataset.countDelay = String(index * 120); // 0ms, 120ms, 240ms, ...
+      });
+
+      function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+      }
+
+      function animateCounter(el) {
+        const target = parseFloat(el.dataset.countTarget || "0");
+        const decimals = parseInt(el.dataset.countDecimals || "0", 10);
+        const duration = parseInt(el.dataset.countDuration || "1200", 10);
+        const delay = parseInt(el.dataset.countDelay || "0", 10);
+        const overshootFactor = 1.03;
+
+        if (prefersReducedMotion) {
+          el.textContent = target.toFixed(decimals);
+          el.style.opacity = "1";
+          return;
+        }
+
+        let startTime = null;
+
+        function frame(timestamp) {
+          if (!startTime) startTime = timestamp;
+          const elapsed = timestamp - startTime;
+
+          if (elapsed < delay) {
+            requestAnimationFrame(frame);
+            return;
+          }
+
+          const effectiveElapsed = elapsed - delay;
+          const progress = Math.min(effectiveElapsed / duration, 1);
+          const eased = easeOutCubic(progress);
+
+          // Slight overshoot then settle
+          const overshootValue = target * overshootFactor * eased;
+          let displayValue;
+
+          if (progress < 0.9) {
+            displayValue = overshootValue;
+          } else {
+            const settleProgress = (progress - 0.9) / 0.1; // 0 -> 1 from 90% to 100%
+            displayValue = target + (overshootValue - target) * (1 - settleProgress);
+          }
+
+          el.style.opacity = "1";
+          el.textContent = displayValue.toFixed(decimals);
+
+          if (progress < 1) {
+            requestAnimationFrame(frame);
+          } else {
+            // Snap exactly to target at the end
+            el.textContent = target.toFixed(decimals);
+          }
+        }
+
+        requestAnimationFrame(frame);
+      }
+
+      const observer = new IntersectionObserver(
+        entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              animateCounter(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+
+      counters.forEach(el => observer.observe(el));
+    })();
+  </script>
+
+</body>
+</html>
