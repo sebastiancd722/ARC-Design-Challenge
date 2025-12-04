@@ -31,11 +31,8 @@
       rpg: 7.8,
       spg: 1.9,
     };
-    window.PLAYER = PLAYER;
 
     document.addEventListener("DOMContentLoaded", () => {
-      if (!window.PLAYER) return;
-
       const bindings = {
         ppgHero: "ppg",
         apgHero: "apg",
@@ -48,8 +45,8 @@
 
       Object.entries(bindings).forEach(([id, key]) => {
         const el = document.getElementById(id);
-        if (!el || window.PLAYER[key] == null) return;
-        el.dataset.countTarget = window.PLAYER[key];
+        if (!el || PLAYER[key] == null) return;
+        el.dataset.countTarget = PLAYER[key];
       });
     });
   </script>
@@ -210,7 +207,7 @@
             <div class="space-y-2">
               <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400 flex items-center gap-3">
                 <span class="h-4 w-1 rounded-full bg-accent-500"></span>
-                Season stats section
+                Season stats · Reusable ARC block
               </p>
               <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Snapshot for coaches and scouts</h2>
               <p class="text-sm text-slate-300 max-w-xl">
@@ -229,7 +226,7 @@
           <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
 
             <!-- Card 1 -->
-            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px]">
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px] transition-transform hover:-translate-y-1 hover:shadow-black/30">
               <div class="space-y-1">
                 <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Points per game</p>
                 <p class="text-3xl font-semibold">
@@ -250,7 +247,7 @@
             </div>
 
             <!-- Card 2 -->
-            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px]">
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px] transition-transform hover:-translate-y-1 hover:shadow-black/30">
               <div class="space-y-1">
                 <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Assists per game</p>
                 <p class="text-3xl font-semibold">
@@ -271,7 +268,7 @@
             </div>
 
             <!-- Card 3 -->
-            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px]">
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px] transition-transform hover:-translate-y-1 hover:shadow-black/30">
               <div class="space-y-1">
                 <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Rebounds per game</p>
                 <p class="text-3xl font-semibold">
@@ -292,7 +289,7 @@
             </div>
 
             <!-- Card 4 -->
-            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px]">
+            <div class="border border-slate-800 bg-slate-900/80 rounded-2xl px-5 py-4 flex flex-col justify-between shadow-lg shadow-black/10 min-h-[180px] transition-transform hover:-translate-y-1 hover:shadow-black/30">
               <div class="space-y-1">
                 <p class="text-[11px] tracking-[0.18em] uppercase text-slate-400">Steals per game</p>
                 <p class="text-3xl font-semibold">
@@ -316,8 +313,8 @@
 
           <!-- Small note -->
           <p class="text-[11px] text-slate-500">
-            This stats section is designed as a reusable block in a section library. In a live ARC Profile build,
-            data could update automatically from connected stat providers or game logs.
+            This stats block is designed as a reusable ARC Profile module. In a live build, these values would be
+            driven by team or league stat feeds.
           </p>
         </div>
       </section>
